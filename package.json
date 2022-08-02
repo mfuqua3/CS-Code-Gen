@@ -1,0 +1,21 @@
+{
+  "name": "CS Code Gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "author": "Matt Fuqua",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "eslint": "^8.21.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "change-case": "^4.1.2"
+  }
+}
