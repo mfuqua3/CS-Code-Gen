@@ -36,8 +36,8 @@ export function example() {
         name: "TestEnum",
         accessModifier: AccessModifier.Public,
         attributes: [
-            {name: "Authorize", constructorArguments: [{name: "roles", value: "DataConstants.Role.AuthCobraAdmin"}], declarativeArguments: [{name: "Policies", value: "SomePolicy"}]}
-        ],
+            {name: "Authorize" }
+            ]
         fields: [
             {name: "Field1", value: 0, attributes: [{name: "Required"}]},
             {name: "Field2", value: 1, attributes: [{name: "Required"}]},
