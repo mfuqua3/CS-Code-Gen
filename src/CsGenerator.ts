@@ -28,9 +28,15 @@ export class CsGenerator   {
         for (const file of directory.files) {
             const filePath = directoryPath + "/" + file.name;
             const fileSb = new StringBuilder();
-            fileSb.appendLine("//Generated File")
+            fileSb.appendLine("//Generated File");
+            fileSb.appendLine("//C# Code Generator for Typescript");
+            fileSb.appendLine("//https://github.com/mfuqua3/CS-Code-Gen")
             for (const usingStatement of file.usingStatements) {
                 fileSb.appendLine(`using ${usingStatement};`)
+            }
+            fileSb.appendLine();
+            if(file.namespace){
+                fileSb.appendLine(`namespace ${file.namespace};`);
             }
             fileSb.appendLine();
             const csWriter = new CsWriter();

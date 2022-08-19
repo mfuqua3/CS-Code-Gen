@@ -5,6 +5,7 @@ import {StringBuilder} from "../utils/StringBuilder";
 import {accessModifier} from "./generatorHelpers";
 import {camelCase, pascalCase} from "change-case";
 import {AttributeWriter} from "./AttributeWriter";
+import {argumentValue} from "../../src/utils/argumentValue";
 
 export class ConstructorWriter extends TypedCsStructureWriter<Constructor> {
     typeSafeWrite(structure: Constructor, context: CsWriterContext): string {
@@ -24,7 +25,7 @@ export class ConstructorWriter extends TypedCsStructureWriter<Constructor> {
         ctorSb.append(`${params})`);
         if(structure.baseArguments){
             ctorSb.append(" : base(");
-            ctorSb.append(structure.baseArguments.map(arg=>arg.value ?? arg.name).join(", "));
+            ctorSb.append(structure.baseArguments.map(arg=>argumentValue(arg) ?? arg.name).join(", "));
             ctorSb.append(")");
         }
         ctorSb.appendLine();

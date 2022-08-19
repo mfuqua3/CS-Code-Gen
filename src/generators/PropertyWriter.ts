@@ -5,6 +5,7 @@ import {StringBuilder} from "../utils/StringBuilder";
 import {AttributeWriter} from "./AttributeWriter";
 import {accessModifier} from "./generatorHelpers";
 import {pascalCase} from "change-case";
+import {propertyValue} from "../../src/utils/argumentValue";
 
 export class PropertyWriter extends TypedCsStructureWriter<Property> {
     typeSafeWrite(structure: Property, context: CsWriterContext): string {
@@ -18,6 +19,10 @@ export class PropertyWriter extends TypedCsStructureWriter<Property> {
         }
         propertySb.indent(currentIndent);
         propertySb.append(`${accessModifier(structure.accessModifier)} ${structure.type} ${pascalCase(structure.name)}`);
+        if(structure.getOnly && structure.value){
+            propertySb.append(` => ${structure.value};`);
+            return propertySb.toString();
+        }
         propertySb.append(" { get; set; }");
         return propertySb.toString();
     }

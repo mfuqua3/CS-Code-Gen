@@ -7,14 +7,10 @@ import {CsFile} from "../structures/CsFile";
 
 export class CsFileBuilder implements CsFile {
     usingStatements: string[] = [];
+    namespace: string = "";
     members: CsStructure[] = [];
 
     constructor(public readonly name: string) {
-    }
-
-    addUsings(statements: string[]) {
-        this.usingStatements.concat(...statements);
-        return this;
     }
 
     addClass(params: CsClassParams): CsClassBuilder {

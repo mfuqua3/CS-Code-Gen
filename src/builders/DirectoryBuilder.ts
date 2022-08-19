@@ -2,12 +2,14 @@ import { pascalCase } from "change-case";
 import {CsFileBuilder} from "./CsFileBuilder";
 import {CsFile} from "../structures/CsFile";
 import {GeneratedDirectory} from "../structures/GeneratedDirectory";
+import sanitize from "sanitize-filename";
 
 export class DirectoryBuilder implements GeneratedDirectory{
     files: CsFile[] = [];
     subDirectories: GeneratedDirectory[] = [];
 
-    constructor(public readonly name: string) {
+    constructor(name: string) {
+        this.name = pascalCase(sanitize(name));
     }
 
     createSourceFile(filename: string): CsFileBuilder {
@@ -21,5 +23,7 @@ export class DirectoryBuilder implements GeneratedDirectory{
         this.subDirectories.push(builder);
         return builder;
     }
+
+    name: string;
 
 }
